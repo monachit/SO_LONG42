@@ -6,33 +6,23 @@
 /*   By: mnachit <mnachit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:33:26 by mnachit           #+#    #+#             */
-/*   Updated: 2024/02/10 15:02:55 by mnachit          ###   ########.fr       */
+/*   Updated: 2024/02/17 09:38:57 by mnachit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	*ft_image_final(int i, int j, char **map, int a)
+char	*ft_image_final(int a)
 {
 	char	*s;
-	int		l;
 
-	l = ft_ft(map);
-	if (map[i][j] == '1')
-		s = "textures/wall.xpm";
-	else if (map[i][j] == '0')
-		s = "textures/space.xpm";
-	else if (l == 0 && map[i][j] == 'E')
-		s = "textures/opendoor.xpm";
-	else if (map[i][j] == 'P' && a == 97)
+	if (a == 97)
 		s = "textures/p_left.xpm";
-	else if (map[i][j] == 'P' && a == 100)
+	else if (a == 100)
 		s = "textures/p_right.xpm";
-	else if (map[i][j] == 'E')
-		s = "textures/exit.xpm";
-	else if (map[i][j] == 'C')
-		s = "textures/collec.xpm";
-	else if (map[i][j] == 'P')
+	else if (a == 'E')
+		s = "textures/opendoor.xpm";
+	else
 		s = "textures/p_right.xpm";
 	return (s);
 }
@@ -94,12 +84,4 @@ char	**ft_addfakemap(char **map)
 	}
 	fake_map[i] = NULL;
 	return (fake_map);
-}
-
-void	ft_new_map(t_vars *game, int xi, int yj)
-{
-	game->map1[game->player_x][game->player_y] = '0';
-	game->player_x = xi;
-	game->player_y = yj;
-	game->map1[xi][yj] = 'P';
 }

@@ -6,7 +6,7 @@
 /*   By: mnachit <mnachit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:37:15 by mnachit           #+#    #+#             */
-/*   Updated: 2024/02/07 16:45:24 by mnachit          ###   ########.fr       */
+/*   Updated: 2024/02/11 16:55:00 by mnachit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,9 @@ int	ft_strlen_pro(char *str, char c)
 	return (0);
 }
 
-void	ft_show_error(const char *msg)
+void	ft_show_error(char *msg)
 {
-	ft_putstr_fd("Error\n", 2);
-	ft_putstr_fd((char *)msg, 2);
+	ft_printf("Error\n %s", msg);
 	exit(1);
 }
 

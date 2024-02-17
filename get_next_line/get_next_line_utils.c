@@ -6,7 +6,7 @@
 /*   By: mnachit <mnachit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 19:22:01 by mnachit           #+#    #+#             */
-/*   Updated: 2023/12/13 06:56:41 by mnachit          ###   ########.fr       */
+/*   Updated: 2024/02/17 09:22:33 by mnachit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strchr(const char *s, int c)
 
 	str = (char *)s;
 	i = 0;
-	while (i <= ft_strlen(s))
+	while (i <= ft_strlen1(s))
 	{
 		if (str[i] == (char )c)
 			return (str + i);
@@ -37,7 +37,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	i = 0;
 	if (!s1 || !s2)
 		return (NULL);
-	str = malloc((ft_strlen(s1) + ft_strlen(s2)) + 1);
+	str = malloc((ft_strlen1(s1) + ft_strlen1(s2)) + 1);
 	if (str == NULL)
 		return (NULL);
 	j = 0;
@@ -56,7 +56,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (str);
 }
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen1(const char *s)
 {
 	size_t	i;
 
@@ -66,16 +66,16 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr1(char const *s, unsigned int start, size_t len)
 {
 	char	*str;
 	size_t	i;
 
 	i = 0;
-	if (start > ft_strlen(s))
-		return (ft_strdup(""));
-	else if (ft_strlen(s + start) < len)
-		str = malloc(ft_strlen(s + start) + 1);
+	if (start > ft_strlen1(s))
+		return (ft_strdup1(""));
+	else if (ft_strlen1(s + start) < len)
+		str = malloc(ft_strlen1(s + start) + 1);
 	else
 		str = malloc(len + 1);
 	if (!str)
@@ -90,7 +90,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (str);
 }
 
-char	*ft_strdup(const char *src)
+char	*ft_strdup1(const char *src)
 {
 	size_t		i;
 	size_t		size;

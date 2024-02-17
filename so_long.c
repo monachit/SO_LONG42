@@ -6,7 +6,7 @@
 /*   By: mnachit <mnachit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 06:46:27 by mnachit           #+#    #+#             */
-/*   Updated: 2024/02/09 18:06:04 by mnachit          ###   ########.fr       */
+/*   Updated: 2024/02/13 00:17:44 by mnachit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,24 @@ static void	ft_so_long(char *read_map)
 	map = ft_read_map(read_map);
 	check_error(map);
 	fakemap = ft_addfakemap(map);
-	check_path(fakemap);
+	if (check_path(fakemap))
+	{
+		free_map(fakemap, ft_len(fakemap));
+		free_map(map, ft_len(map));
+		ft_show_error("path not valid!");
+	}
 	free_map(fakemap, ft_len(fakemap));
 	game_plan(map);
+}
+
+int	ft_exit(t_vars *game)
+{
+	mlx_destroy_window(game->mlx, game->win);
+	mlx_destroy_display(game->mlx);
+	free(game->mlx);
+	free_map(game->map1, ft_len(game->map1));
+	exit(0);
+	return (0);
 }
 
 int	main(int ac, char **av)

@@ -6,7 +6,7 @@
 /*   By: mnachit <mnachit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 18:43:58 by mnachit           #+#    #+#             */
-/*   Updated: 2024/02/07 12:01:29 by mnachit          ###   ########.fr       */
+/*   Updated: 2024/02/17 13:48:42 by mnachit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,14 @@ static void	ft_flood_fill(int x, int y, char **map)
 	if (x < 0 || x >= ft_len(map) || y < 0 || (size_t)y >= ft_strlen(map[0])
 		|| map[x][y] == '1' || map[x][y] == 'E' || map[x][y] == 'V')
 		return ;
-	if (map[x][y] != 'P')
-		map[x][y] = 'V';
+	map[x][y] = 'V';
 	ft_flood_fill(x - 1, y, map);
 	ft_flood_fill(x + 1, y, map);
 	ft_flood_fill(x, y - 1, map);
 	ft_flood_fill(x, y + 1, map);
 }
 
-static void	path_to_exit(char **map)
+static int	path_to_exit(char **map)
 {
 	int	i;
 	int	j;
@@ -37,18 +36,19 @@ static void	path_to_exit(char **map)
 		while (map[i][j])
 		{
 			if (map[i][j] == 'C')
-				ft_show_error("player can't take the collectible");
+				return (1);
 			if (map[i][j] == 'E' && map[i - 1][j] != 'V'
 			&& map[i + 1][j] != 'V'
 			&& map[i][j - 1] != 'V' && map[i][j + 1] != 'V')
-				ft_show_error("player can't exit the map");
+				return (1);
 			j++;
 		}
 		i++;
 	}
+	return (0);
 }
 
-void	check_path(char **map)
+int	check_path(char **map)
 {
 	int	x;
 	int	y;
@@ -57,5 +57,7 @@ void	check_path(char **map)
 	y = 0;
 	ft_position_player(&x, &y, map);
 	ft_flood_fill(x, y, map);
-	path_to_exit(map);
+	if (path_to_exit(map))
+		return (1);
+	return (0);
 }

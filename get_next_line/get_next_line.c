@@ -6,7 +6,7 @@
 /*   By: mnachit <mnachit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 19:21:58 by mnachit           #+#    #+#             */
-/*   Updated: 2023/12/14 20:52:18 by mnachit          ###   ########.fr       */
+/*   Updated: 2024/02/17 09:21:30 by mnachit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	ft_read(int fd, char *buf, char **str, ssize_t i)
 		{
 			buf[i] = '\0';
 			if (!*str)
-				*str = ft_substr(buf, 0, i);
+				*str = ft_substr1(buf, 0, i);
 			else
 			{
 				tmp = *str;
@@ -57,15 +57,15 @@ static char	*ft_finish(char **str)
 		return (NULL);
 	if (!ft_strchr(*str, '\n'))
 	{
-		ret = ft_substr(*str, 0, ft_strlen(*str));
+		ret = ft_substr1(*str, 0, ft_strlen1(*str));
 		ft_free(*&str);
 		return (ret);
 	}
-	i = ft_strlen(*str);
-	j = ft_strlen(ft_strchr(*str, '\n'));
-	ret = ft_substr(*str, 0, i - j + 1);
+	i = ft_strlen1(*str);
+	j = ft_strlen1(ft_strchr(*str, '\n'));
+	ret = ft_substr1(*str, 0, i - j + 1);
 	tmp = *str;
-	*str = ft_substr(ft_strchr(*str, '\n'), 1, j - 1);
+	*str = ft_substr1(ft_strchr(*str, '\n'), 1, j - 1);
 	if (!*str)
 		return (NULL);
 	free(tmp);

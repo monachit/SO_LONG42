@@ -6,7 +6,7 @@
 /*   By: mnachit <mnachit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:17:00 by mnachit           #+#    #+#             */
-/*   Updated: 2024/02/10 15:02:46 by mnachit          ###   ########.fr       */
+/*   Updated: 2024/02/17 10:15:34 by mnachit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 # define SO_LONG_H
 # include <mlx.h>
-# include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
 # include "get_next_line/get_next_line.h"
 
@@ -34,17 +33,23 @@ typedef struct s_vars
 void	check_error(char **map);
 char	**ft_read_map(char *nmap);
 int		ft_strlen_pro(char *str, char c);
-void	ft_show_error(const char *msg);
+void	ft_show_error(char *msg);
 int		ft_search(char **map, char c);
 char	**ft_addfakemap(char **map);
 int		ft_len(char **map);
-void	check_path(char **map);
+int		check_path(char **map);
 void	game_plan(char **map);
 void	ft_position_player(int *x, int *y, char **map);
-char	*ft_image_final(int i, int j, char **map, int a);
+char	*ft_image_final(int a);
 char	*ft_image(int i, int j, char **map);
 int		ft_ft(char **map);
 void	free_map(char **map, int map_size);
-void	ft_new_map(t_vars *game, int xi, int yj);
+int		ft_exit(t_vars *game);
+void	ft_check_if(char **map);
+void	ft_check_characters(char **map);
+char	*ft_strdup(char *src);
+char	**ft_split(char *s, char c);
+size_t	ft_strlen(char *s);
+char	*ft_substr(char *s, unsigned int start, size_t len);
 
 #endif

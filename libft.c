@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   libft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnachit <mnachit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 09:29:53 by mnachit           #+#    #+#             */
-/*   Updated: 2023/11/19 16:39:38 by mnachit          ###   ########.fr       */
+/*   Created: 2024/02/17 09:10:28 by mnachit           #+#    #+#             */
+/*   Updated: 2024/02/17 10:24:59 by mnachit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
-static int	ft_nachit(char const s, char c)
+static int	ft_nachit(char s, char c)
 {
 	if ((char )s == c)
 		return (1);
@@ -20,7 +20,7 @@ static int	ft_nachit(char const s, char c)
 		return (0);
 }
 
-static int	ft_len(char const *s, char c)
+static int	ft_len1(char *s, char c)
 {
 	size_t	i;
 	size_t	j;
@@ -57,7 +57,7 @@ static char	**free_al(char **ptr, size_t i)
 	return (NULL);
 }
 
-static char	**ft_daym(char const *s, char **str, char c, size_t length)
+static char	**ft_daym(char *s, char **str, char c, size_t length)
 {
 	size_t	i;
 	size_t	start;
@@ -83,14 +83,14 @@ static char	**ft_daym(char const *s, char **str, char c, size_t length)
 	return (str);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char *s, char c)
 {
 	char	**str;
 	size_t	length;
 
 	if (!s)
 		return (NULL);
-	length = ft_len(s, c);
+	length = ft_len1(s, c);
 	str = malloc((length + 1) * sizeof(char *));
 	if (!str)
 		return (NULL);
